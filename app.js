@@ -26,7 +26,7 @@ function requestPage (index) {
 
 function requestDetail (index) {
   request(urls[index], function (err, res, body) {
-    var result = body.match(/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/g)
+    var result = (body && body.match) ? body.match(/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/g) : null
     if (!err && res.statusCode == 200 && result) {
       fs.readFile('result.txt', 'utf-8', function (err, data) {
         var str = ''

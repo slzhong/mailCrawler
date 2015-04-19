@@ -1,0 +1,25 @@
+{
+  "name": "crawler",
+  "version": "0.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "cheerio": "^0.19.0",
+    "iconv-lite": "^0.4.8",
+    "request": "^2.55.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sherlock917/mailCrawler.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sherlock917/mailCrawler/issues"
+  },
+  "homepage": "https://github.com/sherlock917/mailCrawler"
+}
