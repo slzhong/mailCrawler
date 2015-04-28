@@ -10,7 +10,7 @@ requestPage(p)
 
 function requestPage (index) {
   console.log('page: ' + index)
-  request('http://sou.zhaopin.com/jobs/searchresult.ashx?jl=%E5%8C%97%E4%BA%AC&kw=java&p=' + index, function (err, res, body) {
+  request('http://sou.zhaopin.com/jobs/searchresult.ashx?jl=%E5%B9%BF%E5%B7%9E&kw=java&p=' + index, function (err, res, body) {
     if (!err && res.statusCode == 200) {
       var $ = cheerio.load(body)
       var list = $('.gsmc')
@@ -32,7 +32,12 @@ function requestDetail (index) {
         var str = ''
         for (var i in result) {
           if (str.indexOf(result[i]) < 0 && data.indexOf(result[i]) < 0) {
-            str += result[i] + '\r\n'
+            var name = body.match(/([\u4e00-\u9fa5]+)集团/g) || body.match(/([\u4e00-\u9fa5]+)公司/g)
+            var phone = body.match(/电话：*\:*\s*\d{0,2}–*\-*\d{0,3}–*\-*\d{7,11}/g)
+            str += '名称：' + (name ? name[0] : '无') + '\r\n'
+            str += '邮箱：' + result[i] + '\r\n'
+            str += (phone ? phone[0] : '电话：无') + '\r\n'
+            str += '\r\n'
           }
         }
         fs.appendFile('result.txt', str, function (err) {
