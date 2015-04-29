@@ -10,7 +10,7 @@ requestPage(p)
 
 function requestPage (index) {
   console.log('page: ' + index)
-  request('http://sou.zhaopin.com/jobs/searchresult.ashx?jl=%E5%B9%BF%E5%B7%9E&kw=java&p=' + index, function (err, res, body) {
+  request('http://sou.zhaopin.com/jobs/searchresult.ashx?jl=%E5%8C%97%E4%BA%AC&kw=java&p=' + index, function (err, res, body) {
     if (!err && res.statusCode == 200) {
       var $ = cheerio.load(body)
       var list = $('.gsmc')
